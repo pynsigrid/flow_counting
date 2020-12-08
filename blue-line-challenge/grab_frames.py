@@ -7,12 +7,12 @@ import imutils
 from imutils.video import FPS
 from imutils.video import VideoStream
 
-in_path = r'/Users/panyining/PycharmProjects/video_processing/people-counting-opencv/videos/example_01.mp4'
-out_path = r'/Users/panyining/PycharmProjects/video_processing/blue-line-challenge/output/example_01_out.avi'
+in_path = r'/Users/panyining/PycharmProjects/video_processing/blue-line-challenge/video/example_012.mp4'
+out_path = r'/Users/panyining/PycharmProjects/video_processing/blue-line-challenge/output/example_016_out.avi'
 # cap = cv2.VideoCapture('/Users/panyining/PycharmProjects/video_processing/blue-line-challenge/video/output_01.avi')
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--input", type=str, default=in_path,
+ap.add_argument("-i", "--input", type=str,
                 help="path to optional input video file")
 ap.add_argument("-o", "--output", type=str, default=out_path,
                 help="path to optional output video file")
@@ -63,7 +63,7 @@ while True:
                                  (W, H), True)
 
     frame[:height, :, :] = old_frame[:height, :, :]
-    line = frame[height:height + 1, :, :]
+    line = old_frame[height:height + 1, :, :]
 
 
     if writer is not None:
@@ -71,14 +71,14 @@ while True:
     # frame[height:height + 1, :, 0] = 240  # B
     # frame[height:height + 1, :, 1] = 127  # G
     # frame[height:height + 1, :, 2] = 0  # R
-    # time.sleep(1.0)
+    time.sleep(0.05)
     # frame[height:height + 1, :, :] = line
 
     # cv2.imencode('.jpg', frame)[1].tofile(out_path + 'frame_' + str(i) + '.jpg')  # 路径含中文存图
     cv2.imshow('frame', frame)
 
     i += 1
-    height += 3
+    height += 2
     # print(f'i, height = {i}, {height}')
 
 
